@@ -1,0 +1,14 @@
+body{
+	background-image: url("webdesign.jpg");
+	background-size: 1550px 753px;
+}
+h1{
+	text-align:center;
+	color: black;
+	font-size: 48px;
+}
+p{
+	text-align: right;
+	font-size: 24px;
+	color: darkblue;
+}

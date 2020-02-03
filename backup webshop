@@ -1,0 +1,92 @@
+<?php
+include"Webshop.php";
+$aantal = $con->prepare("SELECT count(*) FROM klantgegevens WHERE Dag like '%12/2/20%' ");
+$aantal ->execute();
+
+$aantalrow = $aantal->fetch(PDO:: FETCH_NUM);
+$aantalnum-> $aantalrow[0];
+
+$aantal2 = $con->prepare("SELECT count(*) FROM klantgegevens WHERE Dag like '%13/2/20%'")
+$aantal2->execute();
+
+$aantalrow2 = $aantal2->fetch(PDO:: FETCH_NUM);
+$aantalnum2 = $aantalrow2[0];
+
+?>
+
+var_dump($lijst);
+		foreach ($lijst as $key => $value) {
+        echo  $value . "<br/>";}
+		}
+		
+		
+		if(isset($_POST['opslaan']))
+		{
+		$geslacht = $_POST['Geslacht'];
+		$naam = $_POST['txtNaam'];
+		$adres = $_POST['txtAdres'];
+		$postcode = $_POST['Postcode'];
+		$woonplaats = $_POST['Woonplaats'];
+		$telefoon = $_POST['Telefoon'];
+		$email = $_POST['E-mail'];
+		
+		
+		Notice: Undefined variable: conn in C:\xampp\htdocs\Webshop.php on line 120
+
+		Fatal error: Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\Webshop.php:120 Stack trace: #0 {main} thrown in C:\xampp\htdocs\Webshop.php on line 120
+		
+		
+
+<?php
+if (isset($_POST["btnVerstuur"])) {
+	
+			$lijst = array();			
+			if (empty($_POST["dierID"])) {
+				echo "Er is geen dierID ingevuld! <br/>";
+			} else {
+				echo "dierID: " . $_POST["dierID"] . "<br/>";
+				$lijst[0] = "dierID: " . $_POST["dierID"] . "<br/>";
+			}
+			
+			$lijst = array();			
+			if (empty($_POST["soort"])) {
+				echo "Er is geen soort ingevuld! <br/>";
+			} else {
+				echo "soort: " . $_POST["soort"] . "<br/>";
+				$lijst[1] = "soort: " . $_POST["soort"] . "<br/>";
+			}
+			
+			$lijst = array();			
+			if (empty($_POST["geslacht"])) {
+				echo "Er is geen geslacht ingevuld! <br/>";
+			} else {
+				echo "geslacht: " . $_POST["geslacht"] . "<br/>";
+				$lijst[2] = "geslacht: " . $_POST["geslacht"] . "<br/>";
+			}
+			
+			$lijst = array();			
+			if (empty($_POST["verblijfplaats"])) {
+				echo "Er is geen verblijfplaats ingevuld! <br/>";
+			} else {
+				echo "verblijfplaats: " . $_POST["verblijfplaats"] . "<br/>";
+				$lijst[3] = "verblijfplaats: " . $_POST["verblijfplaats"] . "<br/>";
+			}
+			
+			if (empty($_POST["type"])) {
+				echo "Er is geen type ingevuld! <br/>";
+			} else {
+				echo "type: " . $_POST["type"] . "<br/>";
+				$lijst[4] = "type: " . $_POST["type"] . "<br/>";
+			}
+			
+		$query = "INSERT INTO dieren(dierID, soort, geslacht, verblijfplaats, type) VALUES ".
+        "('$lijst[0]','$lijst[1]','$lijst[2]','$lijst[3]','$lijst[4]')";
+		
+		$stm = $conn->prepare($query);
+			if($stm->execute())
+			{
+				echo "correct uitgevoerd zit in db";
+			}else echo "query in db mislukt";
+			}
+
+?>
